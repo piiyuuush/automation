@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Report - Pillai HOC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            font-family: 'Times New Roman', serif;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 10mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+        @media print {
+            body { background: none; margin: 0; }
+            .page { margin: 0; box-shadow: none; }
+            .no-print { display: none; }
+        }
+        .outer-border {
+            border: 2px solid #000;
+            border-radius: 15px;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .line-input {
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            flex-grow: 1;
+            margin-left: 5px;
+            height: 1.2em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        .header-text {
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print text-center py-4 bg-gray-800 text-white">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded font-bold transition">Print to PDF (A4)</button>
+    </div>
+
+    <div class="page">
+        <div class="outer-border">
+            <div class="header-text text-center mb-6">
+                <div class="text-sm italic">Mahatma Education Society's</div>
+                <div class="text-xl font-bold">Pillai HOC College of Engineering and Technology</div>
+                <div class="text-lg font-semibold">(Autonomous)</div>
+                <div class="text-xs">Pillai HOCL Educational Campus, HOC Colony, Rasayani, Via Panvel, Dist. Raigad. Pin - 410207</div>
+                <div class="mt-4 font-bold underline decoration-1 underline-offset-4">PERFORMANCE REPORT</div>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <div class="flex items-end">
+                    <span>Name:</span><div class="line-input flex-[2]"></div>
+                    <span class="ml-4">Roll No.:</span><div class="line-input flex-1"></div>
+                </div>
+                <div class="flex items-end">
+                    <span>Sub.:</span><div class="line-input flex-[2]"></div>
+                    <span class="ml-4">Batch:</span><div class="line-input flex-1"></div>
+                </div>
+                <div class="flex items-end">
+                    <span>Class / Branch:</span><div class="line-input flex-[2]"></div>
+                    <span class="ml-4">Semester:</span><div class="line-input flex-1"></div>
+                </div>
+                <div class="flex items-end">
+                    <span>Department of</span><div class="line-input"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2">
+                <div class="border-t border-b border-l border-black">
+                    <div class="border-b border-black py-2 font-bold text-center uppercase tracking-wider">Attendance Report</div>
+                    <div class="flex h-[300px]">
+                        <div class="w-1/2 border-r border-black p-2 font-semibold">Theory</div>
+                        <div class="w-1/2 p-2 font-semibold">Practicals</div>
+                    </div>
+                </div>
+
+                <div class="border border-black">
+                    <div class="border-b border-black py-2 font-bold text-center uppercase tracking-wider">Test Report</div>
+                    <table class="w-full border-none">
+                        <thead>
+                            <tr class="border-b border-black">
+                                <th class="w-1/2 border-r border-black font-semibold">Test No.</th>
+                                <th class="w-1/2 font-semibold">Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black h-16">
+                                <td class="border-r border-black">1.</td>
+                                <td></td>
+                            </tr>
+                            <tr class="border-b border-black h-16">
+                                <td class="border-r border-black">2.</td>
+                                <td></td>
+                            </tr>
+                            <tr class="border-b border-black h-16">
+                                <td class="border-r border-black">3.</td>
+                                <td></td>
+                            </tr>
+                            <tr class="h-20">
+                                <td class="border-r border-black text-sm px-1">Avg. Test Marks<br>(Best of Two)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-auto space-y-6 pt-12">
+                <div class="flex items-end">
+                    <span>Overall Grade in Termwork</span><div class="line-input"></div>
+                </div>
+                <div class="flex items-end">
+                    <span>Staff - in - charge</span><div class="line-input"></div>
+                </div>
+                <div class="flex items-end w-1/2">
+                    <span>Date :</span><div class="line-input"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

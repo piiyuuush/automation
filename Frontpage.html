@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHCET Frontpage Generator</title>
+    <style>
+        /* Generator UI Styles */
+        :root {
+            --primary: #2c3e50;
+        }
+
+        body {
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-print {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-clear {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Your Perfect Template Styles */
+        #print-area {
+            display: none;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .form-container {
+                display: none;
+            }
+
+            #print-area {
+                display: block;
+            }
+
+            .logo {
+                /* This forces the browser to render the image regardless of ink-saving settings */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 10mm;
+            margin: 0 auto;
+            background: white;
+            box-sizing: border-box;
+            position: relative;
+            page-break-after: always;
+        }
+
+        .outer-border {
+            border: 1px solid #000;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-size: 16pt;
+            margin: 5px 0;
+        }
+
+        h3 {
+            font-size: 13pt;
+            margin: 5px 0;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 12pt;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #000;
+            width: 80%;
+            margin: 10px auto;
+        }
+
+        .content-box {
+            border: 2px solid #1a3a5a;
+            height: 75%;
+            margin-top: 20px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .exp-no {
+            text-align: center;
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .field {
+            margin: 25px 0;
+            font-size: 12pt;
+            font-weight: bold;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .field span {
+            font-weight: normal;
+            margin-left: 8px;
+        }
+
+        .inline-fields {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: center;
+            font-size: 10pt;
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2 style="text-align:center; color:var(--primary); margin-top:0">PHCET Document Generator</h2>
+        <div class="input-group"> <label>Type</label> <select id="type">
+                <option>Experiment</option>
+                <option>Assignment</option>
+                <option>File Index</option>
+            </select> </div>
+        <div class="input-group"> <label>Name</label> <input type="text" id="name" value="Piyush Ramesh Bhandari">
+        </div>
+        <div style="display:flex; gap:10px">
+            <div class="input-group" style="flex:2"><label>Class</label><input type="text" id="class" value="S.E"></div>
+            <div class="input-group" style="flex:1"><label>Div</label><input type="text" id="div" value="A"></div>
+        </div>
+        <div class="input-group"><label>Roll No</label><input type="text" id="roll" value="14"></div>
+        <div class="input-group"><label>Subject</label><input type="text" id="subject"></div>
+        <div style="display:flex; gap:10px">
+            <div class="input-group" style="flex:1"><label>Start No</label><input type="number" id="start" value="1">
+            </div>
+            <div class="input-group" style="flex:1"><label>End No</label><input type="number" id="end" value="1"></div>
+        </div>
+        <div class="btn-row"> <button class="btn-print" onclick="generate()">Print Documents</button> <button
+                class="btn-clear" onclick="clearForm()">Clear</button> </div>
+    </div>
+    <div id="print-area"></div>
+    <script> 
+    function clearForm(){
+        document.querySelectorAll('input').forEach(i => i.value = ''); 
+        document.getElementById('type').selectedIndex = 0;
+    }
+    
+    function generate() {
+            const area = document.getElementById('print-area'); area.innerHTML = '';
+            const type = document.getElementById('type').value;
+            const name = document.getElementById('name').value;
+            const className = document.getElementById('class').value;
+            const div = document.getElementById('div').value;
+            const roll = document.getElementById('roll').value;
+            const subject = document.getElementById('subject').value;
+            const start = parseInt(document.getElementById('start').value);
+            const end = parseInt(document.getElementById('end').value);
+            if( type === "File Index"){
+                
+            }
+            else{
+            for (let i = start; i <= end; i++) {
+                area.innerHTML += ` <div class="page"> <div class="outer-border"> <header> <div style="display: flex; align-items: center; text-align: center; border-bottom: 2px solid black; padding-bottom: 10px;">
+    <img src="https://images.shiksha.com/mediadata/images/1737018890php8bc7H3.jpeg" 
+         alt="Logo" 
+         style="width: 90px; height: 90px; object-fit: contain;">
+    
+    <div style="flex-grow: 1; margin-right: 80px;">
+        <h2 style="font-size: 16px; margin: 0; font-weight: normal;">Mahatma Education Society's</h2>
+        <h1 style="font-size: 20px; margin: 5px 0;">Pillai HOC College of Engineering and Technology</h1>
+        <h3 style="font-size: 18px; margin: 0; font-weight: normal;">(Autonomous)</h3>
+        <p style="font-size: 16px; margin: 5px 0 0 0;">Department of Computer Engineering</p>
+    </div>
+</div> </header> <div class="content-box"> <div class="exp-no">${type} No. ${i}</div> <div class="field">Name : <span>${name}</span></div> <div class="inline-fields"> <div class="field" style="margin:0px">Class : <span>${className}</span></div> <div class="field" style="margin:0px">Div : <span>${div}</span></div> </div> <div class="field">Roll No. : <span>${roll}</span></div> <div class="field">Subject : <span>${subject}</span></div> <div class="field">Date of Performance: </div> <div class="field">Date of Submission : </div> <div class="field">Marks :</div> <table> <tr> <th>Understanding</th> <th>Analysis</th> <th>Design</th> <th>Output</th> <th>Time-bound</th> <th>Total</th> </tr> <tr> <td height="40"></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr> </table> <div class="footer"> Signature of Practical-In-charge: </div> </div> </div> </div>`;
+            } window.print();
+        } }</script>
+</body>
+
+</html>
